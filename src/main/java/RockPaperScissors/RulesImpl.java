@@ -4,7 +4,7 @@ import RockPaperScissors.enums.MATERIAL;
 
 public class RulesImpl {
 
-	public MATERIAL decideWhichWin(MATERIAL material1, MATERIAL material2) {
+	public static MATERIAL decideWhichWin(MATERIAL material1, MATERIAL material2) {
 		if (material1.equals(material2)) {
 			return MATERIAL.TIE;
 		}
