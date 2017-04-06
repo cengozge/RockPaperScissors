@@ -10,6 +10,8 @@ public class Controller {
 	
 	public static void manageGame(int round){
 		
+		int tie = 0;
+		int score = 0;
 		Player playerA = new Player();
 		playerA.setMaterial(MATERIAL.PAPER);
 		
@@ -27,16 +29,21 @@ public class Controller {
 			
 			if(result.equals(MATERIAL.TIE)){
 				RulesImpl.printOut("Noone wins! ",playerA.getScore(), playerB.getScore());
+				tie += 1;
 			}else if(playerA.getMaterial().equals(result)){
-				playerA.setScore(playerA.getScore()+1);
+				score = playerA.getScore(); 
+				playerA.setScore(++score);
 				RulesImpl.printOut("Player A wins ",playerA.getScore(), playerB.getScore());
 			}else{
-				playerB.setScore(playerB.getScore()+1);
+				score = playerB.getScore(); 
+				playerB.setScore(++score);
 				RulesImpl.printOut("Player B wins ",playerA.getScore(), playerB.getScore());
 			}
 			round--;
 		}
-		System.out.println("End!");
+		System.out.println("Player A wins: " + playerA.getScore() + " rounds");
+		System.out.println("Player B wins: " + playerB.getScore() + " rounds");
+		System.out.println("Tie: " + tie);
 		
 	}
 	
