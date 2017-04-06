@@ -9,23 +9,12 @@ public class RulesImpl {
 			return MATERIAL.TIE;
 		}
 
-		if (material1.equals(MATERIAL.SCISSORS) && material2.equals(MATERIAL.PAPER))
-			return material1;
-		if (material1.equals(MATERIAL.SCISSORS) && material2.equals(MATERIAL.ROCK))
-			return material2;
+		return material2.equals(MATERIAL.SCISSORS) ? material2 : material1 ;
 
-		if (material1.equals(MATERIAL.PAPER) && material2.equals(MATERIAL.SCISSORS))
-			return material2;
-		if (material1.equals(MATERIAL.PAPER) && material2.equals(MATERIAL.ROCK))
-			return material1;
-
-		if (material1.equals(MATERIAL.ROCK) && material2.equals(MATERIAL.SCISSORS))
-			return material1;
-		if (material1.equals(MATERIAL.ROCK) && material2.equals(MATERIAL.PAPER))
-			return material2;
-		
-		return MATERIAL.TIE;
-
+	}
+	
+	public static void printOut(String msg, int scoreOfPlayerA, int scoreOfPlayerB){
+		System.out.println("PlayerA score: " + scoreOfPlayerA + " PlayerB score: " + scoreOfPlayerB);
 	}
 
 }

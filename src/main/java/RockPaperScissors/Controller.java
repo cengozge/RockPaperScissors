@@ -20,12 +20,26 @@ public class Controller {
 			Scanner s = new Scanner(System.in);
 			System.out.println("Please enter p for Paper, s for Scissors, r for Rock: ");
 			String choiceOfPlayerB = s.nextLine();
+			MATERIAL materialOfB = MATERIAL.fromCode(choiceOfPlayerB);
+			playerB.setMaterial(materialOfB);
 			
-			RulesImpl.decideWhichWin(playerA.getMaterial(), MATERIAL.fromCode(choiceOfPlayerB));
+			MATERIAL result = RulesImpl.decideWhichWin(playerA.getMaterial(), playerB.getMaterial());
 			
+			if(result.equals(MATERIAL.TIE)){
+				RulesImpl.printOut("Noone wins! ",playerA.getScore(), playerB.getScore());
+			}else if(playerA.getMaterial().equals(result)){
+				playerA.setScore(playerA.getScore()+1);
+				RulesImpl.printOut("Player A wins ",playerA.getScore(), playerB.getScore());
+			}else{
+				playerB.setScore(playerB.getScore()+1);
+				RulesImpl.printOut("Player B wins ",playerA.getScore(), playerB.getScore());
+			}
+			round--;
 		}
+		System.out.println("End!");
 		
 	}
+	
 	
 
 }
