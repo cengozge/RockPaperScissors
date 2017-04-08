@@ -1,35 +1,34 @@
 package RockPaperScissors.enums;
 
 public enum MATERIAL {
-	
-	ROCK(1, "r"), 
-	PAPER(2, "p"), 
-	SCISSORS(3, "s"),
-	TIE(4, "");
 
-	private int id;
+	ROCK("r"), PAPER("p"), SCISSORS("s");
+
 	private String code;
 
-	MATERIAL(int id, String code){
-		this.id = id;
+	MATERIAL(String code) {
 		this.code = code;
 	}
-	
-	public int getId() {
-		return id;
+
+	public boolean isBeats(MATERIAL material) {
+		switch (this) {
+		case ROCK:
+			return SCISSORS.equals(material);
+		case SCISSORS:
+			return PAPER.equals(material);
+		case PAPER:
+			return ROCK.equals(material);
+		}
+		return false;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-	
 	public static MATERIAL fromCode(String code) {
-	    for (MATERIAL m : MATERIAL.values()) {
-	      if (m.code.equalsIgnoreCase(code)) {
-	        return m;
-	      }
-	    }
-	    return null;
-	  }
-	
+		for (MATERIAL m : MATERIAL.values()) {
+			if (m.code.equalsIgnoreCase(code)) {
+				return m;
+			}
+		}
+		return null;
+	}
+
 }
