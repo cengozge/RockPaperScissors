@@ -9,6 +9,9 @@ public class Controller {
 
 	public static void manageGame(int round) {
 
+		if(round <= 0){
+			throw new RuntimeException("Round input must be a positive number. ");
+		}
 		int tie = 0;
 		Player playerA = new Player();
 		playerA.setMaterial(MATERIAL.PAPER);
